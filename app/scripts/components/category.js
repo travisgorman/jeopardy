@@ -4,14 +4,11 @@ import _ from 'underscore';
 
 
 const Category = React.createClass({
-  getInitialState: function(){
-      return ({data:{},questions:[]})
-    },
-  componentDidMount: function(){
-      let self = this;
+  getCategory : function(){
+ let self = this;
       $.ajax({
         type: 'GET',
-        url: `http://jservice.io/api/category?id=55`,
+        url: `http://jservice.io/api/category?id=${Math.floor(Math.random()*18000)}`,
          success: ( response ) => {
            let tooHunnit = 200;
            let questions = response;
@@ -33,30 +30,35 @@ const Category = React.createClass({
 // console.log( currentState );
 // console.log( questions );
         currentState.push( questions );
-           this.setState({questions:currentState});
 // console.log( this.state );
+if (questions.clues.length !== 5){
+  self.getCategory();
+} else {
+  self.setState({questions:currentState});
+}
+console.log( questions.clues );
        }
      });
+  },
+  getInitialState: function(){
+      return ({data:{},questions:[]})
+    },
+  componentDidMount: function(){
+     this.getCategory();
   },
   render: function(){
   if (!this.state.questions[0]){
     return null;
   }
     let clues = this.state.questions[0].clues.map( clue => {
-        return  (<li key={clue.id}> ${clue.value} </li>)
+        return  (<li key={clue.id}> ${clue.category_id} </li>)
       });
 
       return (  
         <div className="category">
           <ul>{clues}</ul>
         </div>
-          
-
-
-
       )
-
-
 
     }//close render function
 });//close Category component

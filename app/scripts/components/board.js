@@ -12,6 +12,11 @@ const Board = React.createClass({
       return (
        <div className="board">
          <Category title={this.props.title}/>
+         <Category title={this.props.title}/>
+         <Category title={this.props.title}/>
+         <Category title={this.props.title}/>
+         <Category title={this.props.title}/>
+         <Category title={this.props.title}/>
        </div>
       )
     },

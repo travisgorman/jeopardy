@@ -28,7 +28,7 @@ li {
   margin: 3.5rem auto;
   padding: .5rem; }
   .board .category {
-    width: 12rem;
+    max-width: 12rem;
     display: flex;
     flex-direction: column; }
     .board .category .title {
