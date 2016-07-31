@@ -1,0 +1,52 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:300|Montserrat:700";
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 4.5rem;
+  text-align: center;
+  color: #2A373D; }
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #e8d6b0;
+  font-size: 2.5rem; }
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+  text-align: center;
+  color: #2A373D; }
+
+li {
+  list-style-type: none; }
+
+.board {
+  width: 1080px;
+  height: 720px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 3.5rem auto;
+  padding: .5rem; }
+  .board .category {
+    width: 12rem;
+    display: flex;
+    flex-direction: column; }
+    .board .category .title {
+      flex: 1;
+      align-content: space-around;
+      justify-content: center;
+      align-items: center;
+      margin: .25rem;
+      background-color: #eee;
+      color: #333; }
+    .board .category .value {
+      height: 20%;
+      margin: .25rem;
+      background-color: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center; }
+
+/*# sourceMappingURL=main.css.map */
