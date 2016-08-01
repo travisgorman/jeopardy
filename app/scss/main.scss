@@ -29,6 +29,13 @@ li {
   width: 140px;
   height: 80px;
   background: #89DDF9;
+  &:hover {
+    background: #54C4BB;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: row;
 }
 .board {
   width: 95%;
@@ -75,11 +82,12 @@ li {
   background-color: rgba(84, 196, 187, 0.5);//#54C4BB;
   display: flex;
   min-height: 100vh;
-  .container {
+  .modal-container {
     background: rgba(84, 196, 187, 0.75);
     width:50%;
-    height: 50%;
+    // height: 50%;
     margin: auto;
+    padding: 1.5rem;
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
@@ -95,6 +103,28 @@ li {
        
         .guess{
         margin: auto;
+        // width: 80%;
+        // height: 20%;
+        font-size: 1.5rem;
+        width: 100%;
+
+        }
+      }
+
+
+
+    .close-btn {
+      align-self: flex-end;
+      font-size:3rem;
+      color:#DC2448;
+    }
+    .question {
+      flex: 5;
+      font-size:4rem;
+      color: #222;
+      background: #985254;
+
+    }
           input[type="text"], input[type="submit"]{
             width: 85%;
             height: 20%;
@@ -107,22 +137,6 @@ li {
             color:#fff;
             
           }
-        }
-      }
-
-
-
-    .close-question-btn {
-    
-
-    }
-    .question {
-      flex: 5;
-      font-size:4rem;
-      color: #222;
-      background: #985254;
-
-    }
     // form {
     //   flex: 1;
     //   background: #26A790;

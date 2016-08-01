@@ -28,6 +28,12 @@ li {
   width: 140px;
   height: 80px;
   background: #89DDF9; }
+  li:hover {
+    background: #54C4BB; }
+
+.container {
+  display: flex;
+  flex-direction: row; }
 
 .board {
   width: 95%;
@@ -68,37 +74,43 @@ li {
   background-color: rgba(84, 196, 187, 0.5);
   display: flex;
   min-height: 100vh; }
-  .modal .container {
+  .modal .modal-container {
     background: rgba(84, 196, 187, 0.75);
     width: 50%;
-    height: 50%;
     margin: auto;
+    padding: 1.5rem;
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
     display: flex;
     flex-direction: column; }
-    .modal .container .user-input {
+    .modal .modal-container .user-input {
       height: 100%;
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center; }
-      .modal .container .user-input .guess {
-        margin: auto; }
-        .modal .container .user-input .guess input[type="text"], .modal .container .user-input .guess input[type="submit"] {
-          width: 85%;
-          height: 20%;
-          border: 1px solid #999;
-          padding: 1em;
-          border-radius: 2px; }
-        .modal .container .user-input .guess input[type="submit"] {
-          background-image: linear-gradient(#333, #222);
-          color: #fff; }
-    .modal .container .question {
+      .modal .modal-container .user-input .guess {
+        margin: auto;
+        font-size: 1.5rem;
+        width: 100%; }
+    .modal .modal-container .close-btn {
+      align-self: flex-end;
+      font-size: 3rem;
+      color: #DC2448; }
+    .modal .modal-container .question {
       flex: 5;
       font-size: 4rem;
       color: #222;
       background: #985254; }
+    .modal .modal-container input[type="text"], .modal .modal-container input[type="submit"] {
+      width: 85%;
+      height: 20%;
+      border: 1px solid #999;
+      padding: 1em;
+      border-radius: 2px; }
+    .modal .modal-container input[type="submit"] {
+      background-image: linear-gradient(#333, #222);
+      color: #fff; }
 
 /*# sourceMappingURL=main.css.map */

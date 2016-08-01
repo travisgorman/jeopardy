@@ -1,7 +1,7 @@
 import React from 'react';
 import Category from './category';
 
-console.log('Board connected');
+
 
 const Board = React.createClass({
     getInitialState: function(){
@@ -10,6 +10,7 @@ const Board = React.createClass({
     componentDidMount: function(){},
     render: function(){
       return (
+      // <div className="game">
        <div className="board">
          <Category />
          <Category />
@@ -18,13 +19,12 @@ const Board = React.createClass({
          <Category />
          <Category />
        </div>
+      //   <div className="score">
+      //     <Score/>
+      //   </div>
+      // </div>
       )
     },
 });
 
 export default Board;
-         // <Category title={this.props.title}/>
-         // <Category title={this.props.title}/>
-         // <Category title={this.props.title}/>
-         // <Category title={this.props.title}/>
-         // <Category title={this.props.title}/>

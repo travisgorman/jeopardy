@@ -60,6 +60,7 @@ const Category = React.createClass({
   submitGuess: function(e){
     e.preventDefault();
     let guess = this.refs.guess.value;
+    console.log( guess );
     if (guess === this.props.question.answer){
       let addMoney = store.session.get('money');
       addMoney += this.props.question.value;
@@ -90,11 +91,25 @@ const Category = React.createClass({
       if (this.state.showModal){
 
         return (  
-          <div className="modal" onClick={this.closeQuestion}>
-            <div className="container">
+          <div className="modal" >
+            <div className="modal-container">
+            <i className="fa fa-times close-btn"onClick={this.closeQuestion} />
             <main>
               <h1> {this.state.questions[0].clues[0].question} </h1>
-              <p>Center me, please!</p>
+              <form >
+                <input
+                  className="guess"
+                  onSubmit={this.submitGuess}
+                  type="text" 
+                  name="guess" 
+                  placeholder="Your guess..."/>
+                <input 
+                  className="submit"
+                  onSubmit={this.submitGuess}
+                  type="submit" 
+                  name="submit" 
+                  value="Submit"/>
+              </form>
             </main>
     
           </div>
