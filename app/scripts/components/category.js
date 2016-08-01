@@ -4,45 +4,43 @@ import _ from 'underscore';
 
 
 const Category = React.createClass({
+   getInitialState: function(){
+      return ({data:{},questions:[]})
+  },
   getCategory : function(){
- let self = this;
-      $.ajax({
-        type: 'GET',
-        url: `http://jservice.io/api/category?id=${Math.floor(Math.random()*18000)}`,
-         success: ( response ) => {
-           let tooHunnit = 200;
-           let questions = response;
-// console.log( questions );
+    let self = this;
+    this.state.questions = [];
+    $.ajax({
+      type: 'GET',
+      url: `http://jservice.io/api/category?id=${Math.floor(Math.random()*18000)}`,
+      success: ( response ) => {
+
         // get $200, $400, $600, $800, $1000 clues into an array. 
         // remove duplicates, and return in accending order
-           let clues = questions.clues.filter( clue => {
-             if( clue.value === tooHunnit ) {
-               tooHunnit += 200;
-               return clue;
-             }
-           });
-// console.log( clues );
+
+        let tooHunnit = 200;
+        let questions = response;
+        let clues = questions.clues.filter( clue => {
+              if( clue.value === tooHunnit ) {
+              tooHunnit += 200;
+              return clue;
+            }
+        });
         questions.clues = clues;
-// console.log( this.state );
-// console.log( questions.clues );
-// console.log( this.state.questions );
         let currentState = this.state.questions;
-// console.log( currentState );
-// console.log( questions );
         currentState.push( questions );
-// console.log( this.state );
-if (questions.clues.length !== 5){
-  self.getCategory();
-} else {
-  self.setState({questions:currentState});
-}
-console.log( questions.clues );
-       }
-     });
+
+console.log( questions.clues.length );
+        
+        if (questions.clues.length !== 5){
+          self.getCategory();
+        } else {
+          self.setState({questions:currentState}); 
+          console.log( 'questions length', questions.clues.length );           
+        }
+      }
+    });
   },
-  getInitialState: function(){
-      return ({data:{},questions:[]})
-    },
   componentDidMount: function(){
      this.getCategory();
   },
@@ -50,8 +48,11 @@ console.log( questions.clues );
   if (!this.state.questions[0]){
     return null;
   }
+  console.log( this.state );
     let clues = this.state.questions[0].clues.map( clue => {
-        return  (<li key={clue.id}> ${clue.category_id} </li>)
+        return  (
+          <li key={clue.id}> ${clue.value} </li>
+          )
       });
 
       return (  
