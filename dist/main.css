@@ -1,7 +1,7 @@
 @import "https://fonts.googleapis.com/css?family=Roboto:300|Montserrat:700";
 h1 {
   font-family: 'Roboto', sans-serif;
-  font-size: 4.5rem;
+  font-size: 2.5rem;
   text-align: center;
   color: #2A373D; }
 
@@ -16,10 +16,22 @@ h3 {
   text-align: center;
   color: #2A373D; }
 
+ul {
+  padding: 0; }
+  ul .questionSet {
+    background-color: #DC2448;
+    display: flex;
+    flex-direction: column; }
+
 li {
-  list-style-type: none; }
+  list-style-type: none;
+  width: 140px;
+  height: 80px;
+  background: #89DDF9; }
 
 .board {
+  width: 95%;
+  height: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -28,15 +40,16 @@ li {
   .board .category {
     max-width: 12rem;
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    justify-content: center; }
     .board .category .title {
-      flex: 1;
       align-content: space-around;
       justify-content: center;
       align-items: center;
       margin: .25rem;
       background-color: #eee;
-      color: #333; }
+      color: #333;
+      width: 100%; }
     .board .category .value {
       margin: .25rem;
       background-color: #fff;
@@ -57,35 +70,35 @@ li {
   min-height: 100vh; }
   .modal .container {
     background: rgba(84, 196, 187, 0.75);
-    width: 75%;
-    height: 75%;
+    width: 50%;
+    height: 50%;
     margin: auto;
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
     display: flex;
     flex-direction: column; }
+    .modal .container .user-input {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .modal .container .user-input .guess {
+        margin: auto; }
+        .modal .container .user-input .guess input[type="text"], .modal .container .user-input .guess input[type="submit"] {
+          width: 85%;
+          height: 20%;
+          border: 1px solid #999;
+          padding: 1em;
+          border-radius: 2px; }
+        .modal .container .user-input .guess input[type="submit"] {
+          background-image: linear-gradient(#333, #222);
+          color: #fff; }
     .modal .container .question {
       flex: 5;
       font-size: 4rem;
       color: #222;
       background: #985254; }
-    .modal .container form {
-      flex: 1;
-      background: #26A790;
-      display: flex;
-      flex-direction: row; }
-      .modal .container form .textbox {
-        flex: 12; }
-      .modal .container form .submit-question-btn {
-        flex: .5;
-        padding: 1.5rem;
-        width: 20%;
-        height: 50%;
-        margin: auto;
-        box-sizing: border-box;
-        text-align: center;
-        justify-content: center;
-        align-content: space-around; }
 
 /*# sourceMappingURL=main.css.map */

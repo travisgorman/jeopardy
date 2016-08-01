@@ -43,7 +43,9 @@ const Category = React.createClass({
   openQuestion: function(){
       this.setState({showModal:true});
   },
-  closeQuestion: function(){
+  closeQuestion: function(e){
+    console.log( e.target.refs );
+    // if (e.target.refs !== guess)
     this.setState({showModal:false});
   },
   // submitAnswer: function(e){
@@ -78,7 +80,7 @@ const Category = React.createClass({
       .clues.map( clue => {
 
         return  (
-          <li key={clue.id} onClick={this.openQuestion}> 
+          <li key={clue.id} onClick={this.openQuestion} className="value"> 
             ${clue.value} 
           </li>
           )
@@ -86,37 +88,17 @@ const Category = React.createClass({
 
     let modal;
       if (this.state.showModal){
-        // console.log( this.state.questions[0].clues[0].question );
 
         return (  
-          <div className="modal">
+          <div className="modal" onClick={this.closeQuestion}>
             <div className="container">
-              <h1>
-                {this.state.questions[0].clues[0].question}
-              </h1>
-              <input 
-                 type="button" 
-                 className="close-question-btn" 
-                 value="close" 
-                 onClick={this.closeQuestion} />
-              <div className="question">
-              </div> 
-              <form 
-                  onSubmit={this.submitAnswer}
-                  className="user-input"> 
-                <input 
-                  onSubmit= {this.submitGuess}
-                  className="textbox" 
-                  type="text" 
-                  ref="guess"/>
-                <input 
-                  type="button" 
-                  onClick= {this.submitGuess}
-                  className="submit-question-btn" 
-                  value="submit"/>
-              </form>
-            </div>
+            <main>
+              <h1> {this.state.questions[0].clues[0].question} </h1>
+              <p>Center me, please!</p>
+            </main>
+    
           </div>
+        </div>
         )
       }
       return (  
@@ -124,7 +106,7 @@ const Category = React.createClass({
           <div className="title">
             <h3>{this.state.questions[0].title}</h3>
           </div>
-          <ul>{clues}</ul>
+          <ul className="questionSet">{clues}</ul>
         </div>
       )
 

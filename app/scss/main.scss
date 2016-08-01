@@ -1,7 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300|Montserrat:700';
 h1 {
   font-family: 'Roboto', sans-serif;
-  font-size: 4.5rem;
+  font-size: 2.5rem;
   text-align: center;
   color: #2A373D;
 }
@@ -16,12 +16,23 @@ h3 {
   text-align: center;
   color: #2A373D;
 }
+ul {
+  padding:0;
+  .questionSet {
+    background-color: #DC2448;
+    display: flex;
+    flex-direction: column;
+  }
+}
 li {
   list-style-type: none;
+  width: 140px;
+  height: 80px;
+  background: #89DDF9;
 }
 .board {
-  // width: 1080px;
-  // height: 720px;
+  width: 95%;
+  height: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -31,22 +42,17 @@ li {
     max-width: 12rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     .title {
-      flex: 1;
-      // flex-wrap: wrap;
       align-content: space-around;
       justify-content: center;
       align-items: center;
       margin: .25rem;
       background-color: #eee;
       color: #333;
+      width: 100%;
+
     }
-    // .questionSet {
-    //   flex: 6;
-    //   // background-color: #fff;
-    //   display: flex;
-    //   flex-direction: column;
-    // }
     .value {
       // height: 20%;
       margin: .25rem;
@@ -71,46 +77,70 @@ li {
   min-height: 100vh;
   .container {
     background: rgba(84, 196, 187, 0.75);
-    width:75%;
-    height: 75%;
+    width:50%;
+    height: 50%;
     margin: auto;
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
+    // z-index: 1;
+     .user-input{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+       
+        .guess{
+        margin: auto;
+          input[type="text"], input[type="submit"]{
+            width: 85%;
+            height: 20%;
+            border:1px solid #999;
+            padding:1em;
+            border-radius:2px;
+          }
+          input[type="submit"]{
+            background-image:linear-gradient(#333, #222);
+            color:#fff;
+            
+          }
+        }
+      }
+
+
+
     .close-question-btn {
     
 
     }
-
     .question {
       flex: 5;
       font-size:4rem;
       color: #222;
       background: #985254;
-    }
-    form {
-      flex: 1;
-      background: #26A790;
-      display: flex;
-      flex-direction: row;
-      .textbox {
-      flex:12;
 
-      }
-      .submit-question-btn {
-      flex: .5;
-      padding: 1.5rem;
-      width:20%;
-      height: 50%;
-      margin: auto;
-      box-sizing: border-box;
-      text-align: center;
-      justify-content: center;
-      align-content: space-around;
-      }
     }
+    // form {
+    //   flex: 1;
+    //   background: #26A790;
+    //   display: flex;
+    //   flex-direction: column;
+     
+    //   .submit-question-btn {
+    //     flex: .5;
+    //     padding: 1.5rem;
+    //     width:20%;
+    //     height: 50%;
+    //     margin: auto;
+    //     box-sizing: border-box;
+    //     text-align: center;
+    //     justify-content: center;
+    //     align-content: space-around;
+    //   }
+    // }
   }
 }
 
