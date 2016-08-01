@@ -70,11 +70,11 @@ li {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(84, 196, 187, 0.5);
+  background-color: rgba(244, 107, 90, 0.8);
   display: flex;
   min-height: 100vh; }
   .modal .modal-container {
-    background: rgba(84, 196, 187, 0.75);
+    background: #54C4BB;
     width: 50%;
     margin: auto;
     padding: 1.5rem;
@@ -83,6 +83,12 @@ li {
     justify-content: center;
     display: flex;
     flex-direction: column; }
+    .modal .modal-container main {
+      display: flex;
+      flex-direction: column; }
+    .modal .modal-container form {
+      display: flex;
+      flex-direction: column; }
     .modal .modal-container .user-input {
       height: 100%;
       width: 100%;
@@ -103,7 +109,6 @@ li {
       color: #222;
       background: #985254; }
     .modal .modal-container input[type="text"], .modal .modal-container input[type="submit"] {
-      width: 85%;
       height: 20%;
       border: 1px solid #999;
       padding: 1em;

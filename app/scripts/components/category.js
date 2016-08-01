@@ -80,25 +80,24 @@ const Category = React.createClass({
         return (  
           <div className="modal" >
             <div className="modal-container">
-            <i className="fa fa-times close-btn"onClick={this.closeQuestion} />
-            <main>
-              <h1> {this.state.questions[0].clues[0].question} </h1>
-              <form >
-                <input
-                  className="guess"
-                  onSubmit={this.submitGuess}
-                  type="text" 
-                  name="guess" 
-                  placeholder="Your guess..."/>
-                <input 
-                  className="submit"
-                  onSubmit={this.submitGuess}
-                  type="submit" 
-                  name="submit" 
-                  value="Submit"/>
-              </form>
-            </main>
-    
+              <i className="fa fa-times close-btn"onClick={this.closeQuestion} />
+                <h1> {this.state.questions[0].clues[0].question} </h1>
+              <main>
+                <form >
+                  <input
+                    className="guess"
+                    onSubmit={this.submitGuess}
+                    type="text" 
+                    name="guess" 
+                    placeholder="Your guess..."/>
+                  <input 
+                    className="submit"
+                    onSubmit={this.submitGuess}
+                    type="submit" 
+                    name="submit" 
+                    value="Submit"/>
+                </form>
+              </main>
           </div>
         </div>
         )
