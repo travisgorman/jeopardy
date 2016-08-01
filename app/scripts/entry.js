@@ -10,17 +10,5 @@ ReactDOM.render( <Board/>, page);
 
 console.log('entry connected');
 
-// function getMoney(){
-//   return questionSet.map( function(question){
-//     return _.map( question, function(category){
-//       return category.title
-//     });
-//   });
-// }
-// getMoney();
-
-
-
-
 
 

@@ -33,6 +33,7 @@ li {
     flex-direction: column;
     .title {
       flex: 1;
+      // flex-wrap: wrap;
       align-content: space-around;
       justify-content: center;
       align-items: center;
@@ -47,7 +48,7 @@ li {
     //   flex-direction: column;
     // }
     .value {
-      height: 20%;
+      // height: 20%;
       margin: .25rem;
       background-color: #fff;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 

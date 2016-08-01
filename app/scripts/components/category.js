@@ -5,14 +5,15 @@ import _ from 'underscore';
 
 const Category = React.createClass({
    getInitialState: function(){
-      return ({data:{},questions:[]})
-  },
+      return ({data:{},questions:[],showModal:false})
+    },
   getCategory : function(){
     let self = this;
     this.state.questions = [];
     $.ajax({
       type: 'GET',
-      url: `http://jservice.io/api/category?id=${Math.floor(Math.random()*18000)}`,
+      url: `http://jservice.io/api/category?id=
+        ${Math.floor(Math.random()*18000)}`,
       success: ( response ) => {
 
         // get $200, $400, $600, $800, $1000 clues into an array. 
@@ -21,40 +22,61 @@ const Category = React.createClass({
         let tooHunnit = 200;
         let questions = response;
         let clues = questions.clues.filter( clue => {
-              if( clue.value === tooHunnit ) {
-              tooHunnit += 200;
-              return clue;
-            }
+            if( clue.value === tooHunnit ) {
+            tooHunnit += 200;
+            return clue;
+          }
         });
         questions.clues = clues;
         let currentState = this.state.questions;
-        currentState.push( questions );
-
-console.log( questions.clues.length );
-        
+        currentState.push( questions );        
         if (questions.clues.length !== 5){
           self.getCategory();
         } else {
           self.setState({questions:currentState}); 
-          console.log( 'questions length', questions.clues.length );           
         }
       }
     });
+
+  },
+  openQuestion: function(){
+      this.setState({showModal:true});
+  },
+  closeQuestion: function(){
+    this.setState({showModal:false});
   },
   componentDidMount: function(){
      this.getCategory();
   },
   render: function(){
-  if (!this.state.questions[0]){
+  if ( !this.state.questions[0] ){
     return null;
   }
-  console.log( this.state );
-    let clues = this.state.questions[0].clues.map( clue => {
+    let clues = this.state.questions[0]
+      .clues.map( clue => {
+
         return  (
-          <li key={clue.id}> ${clue.value} </li>
+          <li key={clue.id} onClick={this.openQuestion}> 
+            ${clue.value} 
+          </li>
           )
       });
 
+    let modal;
+      if (this.state.showModal){
+        return (  
+          <div className="modal">
+            <input type="button" className="close-question-btn" value="close" onClick={this.closeQuestion}/>
+            <div className="question">
+              <h1>{this.state.questions[0].clues.question}</h1>
+            </div> 
+            <div className="user-input">
+              <input className="textbox" type="text"/>
+              <input type="button" className="submit-question-btn" value="submit"/>
+            </div>
+          </div>
+        )
+      }
       return (  
         <div className="category">
           <div className="title">
