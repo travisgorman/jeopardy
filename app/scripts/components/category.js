@@ -57,6 +57,9 @@ console.log( questions.clues.length );
 
       return (  
         <div className="category">
+          <div className="title">
+            <h3>{this.state.questions[0].title}</h3>
+          </div>
           <ul>{clues}</ul>
         </div>
       )
