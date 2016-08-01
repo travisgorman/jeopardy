@@ -1,7 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 import _ from 'underscore';
+import ReactDOM from 'react-dom';
 
+// let this.state.questions[0].clues.answer;
 
 const Category = React.createClass({
    getInitialState: function(){
@@ -37,7 +39,6 @@ const Category = React.createClass({
         }
       }
     });
-
   },
   openQuestion: function(){
       this.setState({showModal:true});
@@ -45,13 +46,34 @@ const Category = React.createClass({
   closeQuestion: function(){
     this.setState({showModal:false});
   },
+  // submitAnswer: function(e){
+  //   e.preventDefault();
+  //   let guessInput = React.findDOMnode(this.refs.guess);
+  //   console.log( e );
+  //   console.log( guessInput )
+  //   //
+  //   //check to see if it matches `this.state.questions[0].clues.answer`
+  //   console.log( this.state.questions[0].clues.answer );
+  // },
+  submitGuess: function(e){
+    e.preventDefault();
+    let guess = this.refs.guess.value;
+    if (guess === this.props.question.answer){
+      let addMoney = store.session.get('money');
+      addMoney += this.props.question.value;
+      store.session.set('money', addMoney);
+      store.session.trigger('change');
+      this.setState({result:true});
+    } else {
+      this.setState({result:false});
+    }
+    this.setState({answered:true});
+},
   componentDidMount: function(){
-     this.getCategory();
+    this.getCategory();
   },
   render: function(){
-  if ( !this.state.questions[0] ){
-    return null;
-  }
+    if ( !this.state.questions[0] ){return null}
     let clues = this.state.questions[0]
       .clues.map( clue => {
 
@@ -64,15 +86,35 @@ const Category = React.createClass({
 
     let modal;
       if (this.state.showModal){
+        // console.log( this.state.questions[0].clues[0].question );
+
         return (  
           <div className="modal">
-            <input type="button" className="close-question-btn" value="close" onClick={this.closeQuestion}/>
-            <div className="question">
-              <h1>{this.state.questions[0].clues.question}</h1>
-            </div> 
-            <div className="user-input">
-              <input className="textbox" type="text"/>
-              <input type="button" className="submit-question-btn" value="submit"/>
+            <div className="container">
+              <h1>
+                {this.state.questions[0].clues[0].question}
+              </h1>
+              <input 
+                 type="button" 
+                 className="close-question-btn" 
+                 value="close" 
+                 onClick={this.closeQuestion} />
+              <div className="question">
+              </div> 
+              <form 
+                  onSubmit={this.submitAnswer}
+                  className="user-input"> 
+                <input 
+                  onSubmit= {this.submitGuess}
+                  className="textbox" 
+                  type="text" 
+                  ref="guess"/>
+                <input 
+                  type="button" 
+                  onClick= {this.submitGuess}
+                  className="submit-question-btn" 
+                  value="submit"/>
+              </form>
             </div>
           </div>
         )
