@@ -58,19 +58,6 @@ const Category = React.createClass({
   //   console.log( this.state.questions[0].clues.answer );
   // },
   submitGuess: function(e){
-    e.preventDefault();
-    let guess = this.refs.guess.value;
-    console.log( guess );
-    if (guess === this.props.question.answer){
-      let addMoney = store.session.get('money');
-      addMoney += this.props.question.value;
-      store.session.set('money', addMoney);
-      store.session.trigger('change');
-      this.setState({result:true});
-    } else {
-      this.setState({result:false});
-    }
-    this.setState({answered:true});
 },
   componentDidMount: function(){
     this.getCategory();

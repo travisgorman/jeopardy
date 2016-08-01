@@ -19,7 +19,7 @@ const Scoreboard = React.createClass({
   render:function(){
     return(
       <div className= "scoreboard">
-        <h3 id = "yourMoney"> Total ${this.state.score}</h3>
+        <h3 id = "yourScore"> Total ${this.state.score}</h3>
         </div>
     );
   }
